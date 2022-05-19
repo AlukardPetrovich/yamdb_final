@@ -74,10 +74,10 @@ jobs:
         passphrase: ${{ secrets.PASSPHRASE }} # Если ваш ssh-ключ защищён фразой-паролем
         script: |
           # Выполняет pull образа с DockerHub
-          #sudo docker pull thisispetrovich/actions
+          sudo docker pull thisispetrovich/actions
           #остановка всех контейнеров
-          #sudo docker stop $(sudo docker ps -a -q)
-          #sudo docker run --rm -d -p 5000:5000 thisispetrovich/api_yamdb
+          sudo docker stop $(sudo docker ps -a -q)
+          sudo docker run --rm -d -p 8000:8000 thisispetrovich/api_yamdb
           sudo docker compose stop
           sudo docker compose rm -f web
           touch .env
