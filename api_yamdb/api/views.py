@@ -7,7 +7,6 @@ from rest_framework.decorators import action, api_view, permission_classes
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
-
 from api.custom_viewsets import (ListCreateDestroyViewSet,
                                  RetrieveListCreateDestroyPartialUpdateViewSet)
 from api.filters import TitleFilter
