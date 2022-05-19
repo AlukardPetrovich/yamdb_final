@@ -24,8 +24,8 @@ services:
       # через директорию /app/media/
       - media_value:/app/media/
     # «зависит от», 
-    # ports:
-    #  - "8000:8000"
+    ports:
+      - "8000:8000"
     # "зависит от", 
     depends_on:
       - db
