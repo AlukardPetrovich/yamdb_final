@@ -10,4 +10,4 @@ COPY ./ /app
 
 WORKDIR /app 
 
-CMD ["gunicorn", "app.api_yamdb.wsgi:application", "--bind", "0:8000" ]  
+CMD ["gunicorn", "wsgi:application", "--bind", "0:8000" ]  
