@@ -1,4 +1,3 @@
-
 FROM python:3.7-slim 
 
 RUN mkdir /app 
@@ -11,4 +10,4 @@ COPY ./ /app
 
 WORKDIR /app 
 
-CMD ["gunicorn", "api_yamdb.wsgi:application", "--bind", "0:8000" ]  
+CMD ["gunicorn", "app.api_yamdb.wsgi:application", "--bind", "0:8000" ]  
