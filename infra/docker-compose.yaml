@@ -14,7 +14,7 @@ services:
     env_file:
       - ./.env
   web:
-    image: thisispetrovich/api_yamdb:latest
+    image: thisispetrovich/api_yamdb
     restart: always
     volumes:
       # Контейнер web будет работать с данными, хранящиеся в томе static_value, 
