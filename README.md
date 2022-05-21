@@ -15,36 +15,30 @@
 ---
 
 ### Стэк технологий:
-Python, Django, Django Rest Framework, JWT, Swagger
+Python, Django, Django Rest Framework, JWT, Swagger, Docker
 
 ---
 ### Установка:
+В проекте настроена система CI/CD для автоматического развертывания проекта.
+Для запуска в репозитории необходимо добавить следующие Secrets:
+DOCKER_PASSWORD # Пароль для доступа к DockerHub, для обновления образа
+DOCKER_USERNAME # Имя пользователя для доступа к DockerHub, для обновления образа
+DB_ENGINE # Какая база данных используется в проекте
+DB_HOST # Хост базы данных
+DB_NAME # Имя базы данных проекта
+DB_PORT # Порт для обращения к базе данных
+POSTGRES_PASSWORD # Пароль пользователь базы данных
+POSTGRES_USER # Имя пользователь базы данных
+HOST # IP адрес удаленного сервера на котором разворачивается проект
+USER # Имя пользователя на удаленном сервери, от имени которого разворачивается проект
+SSH_KEY # Приватная часть SSH - ключа для доступа к удаленному серверу
+PASSPHRASE # Пароль для SSH - ключей(если используется)
+TELEGRAM_TO # id получателя уведомления telegram
+TELEGRAM_TOKEN # id telegram - бота отправляющего уведомления
 
-1. Создать виртуальное окружение
-
-*python3 -m venv venv*
-
-2. Активировать виртуальное окружение
-
-*source venv/bin/activate*
-
-3. Установить зависимости
-
-*pip install -r requirement.txt*
-
-4. Выполнить миграции
-
-
-*python3 api_yamdb/manage.py makemigrations*
-
-*python3 api_yamdb/manage.py migrate*
-
-5. Запустить проект
-
-
-*python3 api_yamdb/manage.py runserver*
 
 ---
+
 ### Доступные методы API запросов:
 метод                                            | GET | POST | PUT | PATCH | DEL |
 -------------------------------------------------|-----|------|-----|-------|-----|
@@ -71,7 +65,7 @@ Python, Django, Django Rest Framework, JWT, Swagger
 
 Request:
 ```
-http://127.0.0.1:8000/api/v1/categories/
+http://<URL>/api/v1/categories/
 ```
 Response:
 ```
@@ -83,5 +77,10 @@ Response:
 "results": []
 }
 ]
+
+Полная документация доступна в Swagger-документации проекта.
+```
+http://<URL>/swagger/
+```
 
 ---
