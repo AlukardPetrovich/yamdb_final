@@ -1,6 +1,6 @@
 name: first_independent_workflow
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   tests:
@@ -64,6 +64,7 @@ jobs:
           echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
           echo DB_HOST=${{ secrets.DB_HOST }} >> .env
           echo DB_PORT=${{ secrets.DB_PORT }} >> .env
+          echo DB_PORT=${{ secrets.ALLOWED_HOSTS }} >> .env
           sudo docker compose up -d
   send_message:
     runs-on: ubuntu-latest
