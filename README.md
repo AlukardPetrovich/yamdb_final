@@ -1,4 +1,4 @@
-![first_independent_workflow](https://github.com/AlukardPetrovich/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
+![test_and_deploy](https://github.com/AlukardPetrovich/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 
 ***Проект YaMDb***
 ---
@@ -15,12 +15,28 @@
 ---
 
 ### Стэк технологий:
-Python, Django, Django Rest Framework, JWT, Swagger, Docker
+Python, Django, Django Rest Framework, JWT, Swagger, Docker, Nginx, Gunicorn
 
 ---
+
 ### Установка:
+
 В проекте настроена система CI/CD для автоматического развертывания проекта.
-Для запуска в репозитории необходимо добавить следующие Secrets:
+
+1. Создать удаленный виртуальный сервер в одном из сервисо предлагающих соответствующие услуги.
+
+2. Установить на сервер Docker:
+```
+sudo apt install docker.io
+```
+и Docker compose согласно [официальной документации](https://docs.docker.com/compose/install/).
+
+3. Склонировать репозиторий выполнив в терминале:
+```
+git clone git@github.com:AlukardPetrovich/yamdb_final.git
+```
+
+4. Для запуска, в репозитории необходимо добавить следующие Secrets:
 
 DOCKER_PASSWORD # Пароль для доступа к DockerHub, для обновления образа
 
@@ -52,6 +68,27 @@ TELEGRAM_TO # id получателя уведомления telegram
 
 TELEGRAM_TOKEN # id telegram - бота отправляющего уведомления
 
+5. Выполнить 
+```
+git push
+```
+или вручную запустить githab actions.
+
+6. По завершении выполнения githab actions, подключиться к удаленному серверу через ssh и выполнить миграции:
+```
+sudo docker compose exec web python manage.py migrate
+```
+создать суперпользователя при необходимости:
+```
+sudo docker compose exec web python manage.py createsuperuser
+```
+собрать статику:
+```
+docker-compose exec web python manage.py collectstatic --no-input
+```
+
+### Проект доступен по адресу:
+[API_yamdb](http://apiyamdb.ddns.net/admin/login/?next=/admin/)
 
 ---
 
@@ -93,9 +130,9 @@ Response:
 "results": []
 }
 ]
-
+```
 Полная документация доступна в Swagger-документации проекта:
-
+```
 http://<URL>/swagger/
 ```
 
