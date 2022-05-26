@@ -89,9 +89,6 @@ sudo docker compose exec web python manage.py createsuperuser
 docker-compose exec web python manage.py collectstatic --no-input
 ```
 
-### Проект доступен по адресу:
-[API_yamdb](http://apiyamdb.ddns.net/admin/login/?next=/admin/)
-
 ---
 
 ### Доступные методы API запросов:
